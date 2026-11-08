@@ -1,6 +1,11 @@
 import os
 from dataclasses import dataclass
 
+from dotenv import load_dotenv
+
+
+load_dotenv()
+
 
 @dataclass
 class Settings:
@@ -10,6 +15,6 @@ class Settings:
 
 
 settings = Settings(
-    openai_api_key=os.getenv("OPENAI_API_KEY"),
-    model=os.getenv("MODEL", "gpt-4o-mini"),
+    openai_api_key=os.getenv("OPENAI_API_KEY") or None,
+    model=os.getenv("MODEL") or "gpt-4o-mini",
 )
